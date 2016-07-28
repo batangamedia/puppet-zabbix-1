@@ -27,7 +27,9 @@ Puppet::Type.type(:zabbix_host).provide(:ruby, parent: Puppet::Provider::Zabbix)
     if templates.is_a?(Array)
       templates.each do |template|
         template_id = self.class.get_template_id(zbx, template)
-        template_array.push template_id
+        unless template_id.nil?
+          template_array.push template_id
+        end
       end
     else
       template_array.push self.class.get_template_id(zbx, templates)
