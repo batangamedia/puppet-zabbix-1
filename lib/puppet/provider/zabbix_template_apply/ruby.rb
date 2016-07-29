@@ -37,4 +37,25 @@ Puppet::Type.type(:zabbix_template_apply).provide(:ruby, parent: Puppet::Provide
 
     zbx.templates.mass_add(hosts_id: [hostid], templates_id: template_array)
   end
+  
+   def exists?
+    zabbix_url = @resource[:zabbix_url]
+
+    self.class.require_zabbix if zabbix_url != ''
+
+    host = @resource[:zabbix_hostname]
+    zabbix_user = @resource[:zabbix_user]
+    zabbix_pass = @resource[:zabbix_pass]
+    apache_use_ssl = @resource[:apache_use_ssl]
+    templates = @resource[:templates]
+
+    templates = [templates] unless templates.is_a?(Array)
+
+    res = []
+    res.push(self.class.check_host(host, zabbix_url, zabbix_user, zabbix_pass, apache_use_ssl))
+    templates.each do |template|
+      res.push(self.class.check_template_in_host(host, template, zabbix_url, zabbix_user, zabbix_pass, apache_use_ssl))
+    end
+    res.all?
+  end
 end
