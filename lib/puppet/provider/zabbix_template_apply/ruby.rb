@@ -37,3 +37,4 @@ Puppet::Type.type(:zabbix_template_apply).provide(:ruby, parent: Puppet::Provide
 
     zbx.templates.mass_add(hosts_id: [hostid], templates_id: template_array)
   end
+end
