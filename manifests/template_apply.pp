@@ -14,7 +14,7 @@
 #
 # === Example
 #
-#  zabbix::template { 'Template App MySQL':
+#  zabbix::template_apply { 'Template App MySQL':
 #    zabbix_hostname => ::fqdn
 #  }
 #
