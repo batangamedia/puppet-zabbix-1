@@ -4,7 +4,7 @@ Puppet::Type.newtype(:zabbix_template_apply) do
     defaultto :present
   end
 
-  newparam(:template_name, namevar: true) do
+  newparam(:zabbix_template, namevar: true) do
     desc 'The name of template.'
   end
 
