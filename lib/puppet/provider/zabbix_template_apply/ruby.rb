@@ -6,7 +6,7 @@ Puppet::Type.type(:zabbix_template_apply).provide(:ruby, parent: Puppet::Provide
     self.class.require_zabbix if zabbix_url != ''
 
     host = @resource[:zabbix_hostname]
-    templates = @resource[:template_name]
+    templates = @resource[:zabbix_template]
     zabbix_url = @resource[:zabbix_url]
     zabbix_user = @resource[:zabbix_user]
     zabbix_pass = @resource[:zabbix_pass]
@@ -47,7 +47,7 @@ Puppet::Type.type(:zabbix_template_apply).provide(:ruby, parent: Puppet::Provide
     zabbix_user = @resource[:zabbix_user]
     zabbix_pass = @resource[:zabbix_pass]
     apache_use_ssl = @resource[:apache_use_ssl]
-    templates = @resource[:template_name]
+    templates = @resource[:zabbix_template]
 
     templates = [templates] unless templates.is_a?(Array)
 
