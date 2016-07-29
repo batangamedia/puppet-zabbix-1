@@ -27,7 +27,7 @@
 # Copyright 2015  Fabio Gallese
 #
 define zabbix::template_apply (
-  $templ_name   = $title,
+  $templ_name   = $template_name,
   $zabbix_hostname = '',
 ) {
 
