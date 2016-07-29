@@ -47,7 +47,7 @@ Puppet::Type.type(:zabbix_template_apply).provide(:ruby, parent: Puppet::Provide
     zabbix_user = @resource[:zabbix_user]
     zabbix_pass = @resource[:zabbix_pass]
     apache_use_ssl = @resource[:apache_use_ssl]
-    templates = @resource[:templates]
+    templates = @resource[:template_name]
 
     templates = [templates] unless templates.is_a?(Array)
 
