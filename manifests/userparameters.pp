@@ -63,8 +63,6 @@ define zabbix::userparameters (
   $include_dir          = getvar('::zabbix::agent::include_dir')
   $zabbix_agent_package = getvar('::zabbix::params::zabbix_package_agent')
 
-  notify { "Toy en userparameters.pp y template es: $template": }
-
   if $source != '' {
     file { "${include_dir}/${name}.conf":
       ensure  => present,
@@ -105,7 +103,7 @@ define zabbix::userparameters (
   # which needs to be loaded for this host. When exported resources is
   # used/enabled, we do this automatically.
   if $template != '' {
-    notify { 'Entre en template de manifest userparameters': }
+    notify { "Estoy exportando el recurso necesario para agregar el template $template": }
     zabbix::resources::userparameters { "${::hostname}_${name}":
       hostname => $::fqdn,
       template => $template,
