@@ -63,6 +63,8 @@ define zabbix::userparameters (
   $include_dir          = getvar('::zabbix::agent::include_dir')
   $zabbix_agent_package = getvar('::zabbix::params::zabbix_package_agent')
 
+  notify { "Toy en userparameters.pp y template es: $template": }
+
   if $source != '' {
     file { "${include_dir}/${name}.conf":
       ensure  => present,
