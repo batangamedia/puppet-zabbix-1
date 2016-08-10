@@ -21,7 +21,7 @@ define zabbix::resources::userparameters (
   @@zabbix_userparameters { "${hostname}_${name}":
     hostname       => $hostname,
     template       => $template,
-	hostgroup      => $hostgroup,
+    hostgroup      => $hostgroup,
     zabbix_url     => '',
     zabbix_user    => '',
     zabbix_pass    => '',
