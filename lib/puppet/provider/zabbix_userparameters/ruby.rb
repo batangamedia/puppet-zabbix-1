@@ -7,6 +7,7 @@ Puppet::Type.type(:zabbix_userparameters).provide(:ruby, parent: Puppet::Provide
 
     host = @resource[:hostname]
     template = @resource[:template]
+	hostgroup = @resource[:hostgroup]
     zabbix_user = @resource[:zabbix_user]
     zabbix_pass = @resource[:zabbix_pass]
     apache_use_ssl = @resource[:apache_use_ssl]
@@ -19,6 +20,11 @@ Puppet::Type.type(:zabbix_userparameters).provide(:ruby, parent: Puppet::Provide
     zbx.templates.mass_add(
       hosts_id: [zbx.hosts.get_id(host: host)],
       templates_id: [template_id]
+    )
+    hostgroup_id = self.class.get_group_id(zbx, hostgroup)
+    zbx.hostgroups.mass_add(
+      hosts_id: [zbx.hosts.get_id(host: host)],
+      groups_id: [hostgroup_id]
     )
   end
 

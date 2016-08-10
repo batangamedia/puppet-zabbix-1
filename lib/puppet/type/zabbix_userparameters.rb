@@ -16,6 +16,10 @@ Puppet::Type.newtype(:zabbix_userparameters) do
   newparam(:template) do
     desc 'Template which should be loaded for this host.'
   end
+  
+  newparam(:hostgroup) do
+    desc 'HostGroup which should be loaded for this host.'
+  end
 
   newparam(:zabbix_url) do
     desc 'The url on which the zabbix-api is available.'

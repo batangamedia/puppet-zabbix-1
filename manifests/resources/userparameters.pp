@@ -15,11 +15,13 @@
 define zabbix::resources::userparameters (
   $hostname,
   $template,
+  $hostgroup,
 ) {
 
   @@zabbix_userparameters { "${hostname}_${name}":
     hostname       => $hostname,
     template       => $template,
+	hostgroup      => $hostgroup,
     zabbix_url     => '',
     zabbix_user    => '',
     zabbix_pass    => '',

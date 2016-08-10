@@ -58,6 +58,7 @@ define zabbix::userparameters (
   $script     = '',
   $script_ext = '',
   $template   = '',
+  $hostgroup  = '',
   $script_dir = '/usr/bin',
 ) {
   $include_dir          = getvar('::zabbix::agent::include_dir')
@@ -107,6 +108,7 @@ define zabbix::userparameters (
     zabbix::resources::userparameters { "${::hostname}_${name}":
       hostname => $::fqdn,
       template => $template,
+      hostgroup => $hostgroup,
     }
   }
 }
