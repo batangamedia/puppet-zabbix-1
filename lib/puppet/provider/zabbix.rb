@@ -41,7 +41,7 @@ class Puppet::Provider::Zabbix < Puppet::Provider
 
   def self.get_group_id(zbx, group)
     return group if a_number?(group)
-    zbx.hostgroups.get_id(hostgroup: group)
+    zbx.hostgroups.get_id(name: group)
   end
 
   # Check if given template name exists in current host.
