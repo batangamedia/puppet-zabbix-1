@@ -6,7 +6,7 @@ Puppet::Type.type(:zabbix_hostgroups).provide(:ruby, parent: Puppet::Provider::Z
     self.class.require_zabbix if zabbix_url != ''
 
     host = @resource[:hostname]
-	hostgroup = @resource[:hostgroup]
+    hostgroup = @resource[:hostgroup]
     zabbix_user = @resource[:zabbix_user]
     zabbix_pass = @resource[:zabbix_pass]
     apache_use_ssl = @resource[:apache_use_ssl]
