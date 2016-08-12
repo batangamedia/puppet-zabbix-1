@@ -316,7 +316,7 @@ class zabbix::agent (
   # Ensure that the correct config file is used.
   
   if $::osfamily == 'debian' {
-    if versioncmp($::operatingsystemmajrelease, '8') == -1 {
+    if versioncmp($::operatingsystemmajrelease, '8') == -1 or versioncmp($::lsbmajdistrelease, '8') == -1{
       file { '/etc/init.d/zabbix-agent':
         ensure  => file,
         mode    => '0755',
