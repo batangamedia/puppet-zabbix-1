@@ -45,16 +45,14 @@ class zabbix::repo (
         $reponame     = $majorrelease
       }
       default       : {
-        $majorrelease = $::operatingsystemmajrelease
+        #$majorrelease = $::operatingsystemmajrelease
+        $majorrelease = 'jessie'
         $reponame     = $::operatingsystemmajrelease
       }
     }
 
     case $::osfamily {
 
-      if ${majorrelease} == 'stretch' {
-        ${majorrelease} = 'jessie'
-      }
       'RedHat' : {
         yumrepo { 'zabbix':
           name     => "Zabbix_${reponame}_${::architecture}",
