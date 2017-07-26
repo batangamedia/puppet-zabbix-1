@@ -51,6 +51,10 @@ class zabbix::repo (
     }
 
     case $::osfamily {
+
+      if ${majorrelease} == 'stretch' {
+        ${majorrelease} = 'jessie'
+      }
       'RedHat' : {
         yumrepo { 'zabbix':
           name     => "Zabbix_${reponame}_${::architecture}",
