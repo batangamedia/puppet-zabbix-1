@@ -96,9 +96,9 @@ class zabbix::repo (
             default  : { $releasename = $::lsbdistcodename }
           }
           apt::source { 'zabbix':
-            location => "http://repo.zabbix.com/zabbix/${zabbix_version}/jessie/",
+            location => "http://repo.zabbix.com/zabbix/${zabbix_version}/${operatingsystem}/",
             repos    => 'main',
-            release  => $releasename,
+            release  => 'jessie',
             key      => {
               'id'     => 'FBABD5FB20255ECAB22EE194D13D58E479EA5ED4',
               'source' => 'http://repo.zabbix.com/zabbix-official-repo.key',
